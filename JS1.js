@@ -1,14 +1,15 @@
 //Centro de operaciones
 
 //Variables
-let s = 0,ds = 0,m = 0,dm = 0;
+let s = 0, ds = 0, m = 0, dm = 0;
 let crono = document.createElement("p"); 
 let hora = document.createElement("p");
 let div = document.getElementsByTagName('div');
 let boton = document.getElementById("boton");
 let actividad = false;
-let guardar; 
 let fecha = new Date();
+let guardar; 
+
 
 div[0].appendChild(crono);
 div[0].appendChild(hora);
@@ -34,7 +35,7 @@ function cronometro (){
     if(m == 10){m=0;dm++;}
     
     crono.innerHTML = `${dm}${m}:${ds}${s}`;
-    }
+}
 
 //Clickeo del boton
 function clickeo (){
