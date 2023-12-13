@@ -9,8 +9,8 @@ function TemporizadorJS (){
     let h = document.getElementById("h"); 
     let m = document.getElementById("m"); 
     let s = document.getElementById("s");  
-    let ms = 250;
     let boton = document.getElementById('submit');
+    let ms = 250;
 
     cuerpo.appendChild(tem);
     tem.innerHTML = '00:00';

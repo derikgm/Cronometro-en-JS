@@ -1,0 +1,15 @@
+th {
+    background-color: rgb(48, 127, 237);
+    border: white solid;
+    color: white;
+}
+td{
+    border: white solid;
+    color: white;
+}
+#cuerpo{
+    text-align: center;
+}
+#persona{
+    color: white;
+}

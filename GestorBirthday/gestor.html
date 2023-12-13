@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../Predeterminado.css">    
+    <link rel="stylesheet" href="gestor.css">
+
+</head>
+
+<body>
+    <header>
+        <nav class = "navegacion">
+            <a href="../index.html"><button>inicio</button></a>
+            <a href="../Temporizador/Temporizador.html"><button>Temporizador</button></a>     
+        </nav>
+    </header>
+
+    <main>
+        <br>
+        <div>
+            <form id = "persona">
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" id="nombre"><br><br>
+                <label for="fecha">Fecha:</label>
+                <input type="date" name="fecha" id="fecha"><br><br>
+                <input type="submit" value="Guardar" id = "guardar">
+            </form>
+        </div>
+        <br>
+        <div id = 'birthday'>
+            <table style="border: solid; border-collapse: collapse;" id = 'tabla'>
+                <tr></tr><th>Nombre</th><th>Fecha</th></tr>
+            </table>
+        </div>
+    </main>
+
+    <footer> 
+        <ul>
+            <li id = 'linkdin'><a href="https://www.linkedin.com/in/derik-gonz%C3%A1lez-mart%C3%ADn-6b73242a3/">
+            Linkdin</a></li>
+            <li id = "github"><a href="https://github.com/derikgm">Github</a></li>
+        </ul>  
+    </footer>    
+</body>
+
+<!--Seccion JS-->
+<script src="../hora.js"></script>
+<script src="gestor.js"></script>
+<script src="persona.js"></script>
+
+</html>

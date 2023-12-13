@@ -1,0 +1,63 @@
+/*Seccion del cuerpo*/
+body{
+    background-color: rgb(51, 51, 207);
+}
+footer{
+    text-align: left;
+}
+
+/*Seccion de links*/
+a{
+    color: white;
+    text-decoration: none;
+}
+li a:hover{
+    color: aqua;
+    text-decoration: underline;
+    font-weight: 700;
+}
+a:active{
+    color: blueviolet;
+}
+a:link{
+    color: aqua;
+}
+#linkdin{
+    list-style-image: url('linkedin-logo.png');
+}
+#github{
+    list-style-image: url('github logo.png');
+}
+
+/*Barra de navegacion superior*/
+.navegacion{
+    background-color: rgb(59, 59, 233); 
+    text-align: center;
+    border: white solid;
+}
+.navegacion a {
+    background-color: rgb(59, 59, 233); 
+    text-align: center;
+}
+a button{
+    border: none;
+    background-color: rgb(59, 59, 233);
+    color: white;
+    width: 49.5%;
+    font-size: 120%;
+    
+}
+a button:hover{
+    background-color:rgb(59, 100, 233);    
+}
+
+/*Elementos estandars*/
+p{
+    color: white;
+}
+li{
+    font-size: 115%;
+}
+label{
+    color: white;
+}

@@ -1,0 +1,24 @@
+div button{
+    text-shadow: 4px 3px 6px gray;
+    font-size: 200%;
+    border-radius: 10px;
+}
+div button:hover{
+    text-shadow: 4px 3px 6px rgb(233, 233, 91);
+}
+/*
+#crono{
+    font-size: 400%;
+    border: 8px solid;
+    width: 50%;
+    padding-top: 74px;
+    padding-bottom: 74px;
+    border-radius: 50%;
+    margin-left: 25%;
+    
+}*/
+#crono{
+    font-size: 400%;
+}
+
+

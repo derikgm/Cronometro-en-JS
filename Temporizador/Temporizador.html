@@ -3,27 +3,39 @@
     <head>
         <meta charset="UTF-8">
         <title>Document</title>
+
+        <link rel="stylesheet" href="../Predeterminado.css">
+        <link rel="stylesheet" href="Temporizador.css">
+
     </head>
     <body>
-     <nav>
-            <a href="../index.html"><button>Volver</button></a><br><br>
-     </nav>
-     <div id = 'cuerpo'>
-         <form id="formulario"> 
-            <label for="h">horas:</label>           
-            <input type="number" id="h" name="hora" value="hora">
-            <label for="m">minutos:</label>
-            <input type="number" id="m" name="minuto" value="minuto">
-            <label for="s">segundos:</label>
-            <input type="number" id="s" name = "segundo" value="segundo"><br><br>
-            <input type="submit" value="Iniciar" id="submit">            
-         </form>
-     </div>
-     <footer>
-           <p><a href="https://www.linkedin.com/in/derik-gonz%C3%A1lez-mart%C3%ADn-6b73242a3/">
-               Linkdin</a></p>
-            <p><a href="https://github.com/derikgm">Github</a></p>
-     </footer>
+        <header>
+            <nav class = "navegacion">
+                <a href="../index.html"><button>inicio</button></a>
+                <a href="../GestorBirthday/gestor.html"><button>Gestor de cumpleaños</button></a>                
+            </nav>
+        </header>
+    <main>
+        <br><br>
+        <div id = 'cuerpo'>
+            <form id="formulario"> 
+                <label for="h">Horas:</label>           
+                <input type="number" id="h" name="hora" value="hora">
+                <label for="m">Minutos:</label>
+                <input type="number" id="m" name="minuto" value="minuto">
+                <label for="s">Segundos:</label>
+                <input type="number" id="s" name = "segundo" value="segundo"><br><br>
+                <input type="submit" value="Iniciar" id="submit">            
+            </form>
+        </div>
+    </main>
+     <footer> 
+            <ul>
+                <li id = 'linkdin'><a href="https://www.linkedin.com/in/derik-gonz%C3%A1lez-mart%C3%ADn-6b73242a3/">
+                Linkdin</a></li>
+                <li id = "github"><a href="https://github.com/derikgm">Github</a></li>
+            </ul>  
+        </footer>
     </body>
 
     <!--Seccion JS-->

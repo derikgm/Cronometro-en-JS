@@ -1,21 +1,45 @@
 <!DOCTYPE html>
-<html lang = "es">    
+<html lang = "es">   
+    <!--
+        Tarea pendiente: Construir un scroll para que a medida que se vaya
+        agregando marcas se pueda revisar en ellas sin necesidad de mover la 
+        pagina entera
+     -->
     <head>
         <title>Index de Cronometro</title>
         <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="Predeterminado.css">
+        
     </head>
+
     <body>
-        <nav>
-            <a href="Temporizador/Temporizador.html"><button>Temporizador</button></a>
+        <header>
+            <nav class="navegacion">
+                <a href="Temporizador/Temporizador.html"><button class="linkButton">Temporizador</button></a>
+                <a href="GestorBirthday/gestor.html"><button class="linkButton">Gestor de cumpleaños</button></a>                
+            </nav>
+        </header>
+
+        <main>
             <br><br>
-        </nav>
-        <div>
-            <button id = "boton">Start</button>            
-        </div> 
-        <footer>   
-            <p><a href="https://www.linkedin.com/in/derik-gonz%C3%A1lez-mart%C3%ADn-6b73242a3/">
-                Linkdin</a></p>
-            <p><a href="https://github.com/derikgm">Github</a></p>
+            <div style = "text-align: center;">
+                <p id = 'crono' id = 'crono'>00:00</p>
+                <div id = "almacen"></div>
+                <br><br><br><br><br><br><br><br><br><br>     
+                <button id = "Resetear">Reiniciar</button>                   
+                <button id = "Start">Iniciar</button>                   
+                <button id = "Marcar">Marcar</button>                   
+            </div> 
+        </main>
+
+        <footer> 
+            <ul>
+                <li id = 'linkdin'><a href="https://www.linkedin.com/in/derik-gonz%C3%A1lez-mart%C3%ADn-6b73242a3/">
+                Linkdin</a></li>
+                <li id = "github"><a href="https://github.com/derikgm">Github</a></li>
+            </ul>  
         </footer>   
     </body>
 

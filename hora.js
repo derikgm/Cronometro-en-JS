@@ -1,22 +1,28 @@
 //hora JS
 
-function horaJS(){
-
+//variables
 let div = document.getElementsByTagName('div');
 let hora = document.createElement("p");
-let fecha = new Date();
+let fechaHora = new Date();
+let minutos, segundos;
 
-//div[0].appendChild(hora);
+hora.style = 'text-align: right; font-size: large';
 document.body.appendChild(hora);
-hora.innerHTML = `${fecha.getHours()}:${fecha.getMinutes()}:${fecha.getSeconds()}`;
+
+reloj();
 
 //funcion reloj
 function reloj(){
-    fecha = new Date();
-    hora.innerHTML = `${fecha.getHours()}:${fecha.getMinutes()}:${fecha.getSeconds()}`;
+    fechaHora = new Date();
+
+    (fechaHora.getMinutes() < 10) ? minutos = `0${fechaHora.getMinutes()}`: minutos = `${fechaHora.getMinutes()}`;
+    (fechaHora.getSeconds() < 10) ? segundos = `0${fechaHora.getSeconds()}`: segundos = `${fechaHora.getSeconds()}`;
+
+    
+    if(fechaHora.getHours() <= 12)
+        hora.innerHTML = `<b>${fechaHora.getHours()}:${minutos}:${segundos} AM</b>`;
+    else
+        hora.innerHTML = `<b>${fechaHora.getHours()-12}:${minutos}:${segundos} PM</b>`;
 }
 setInterval(reloj, 1000);
 
-}
-
-horaJS();
