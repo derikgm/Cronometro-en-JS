@@ -6,8 +6,9 @@ let hora = document.createElement("p");
 let fechaHora = new Date();
 let minutos, segundos;
 
-hora.style = 'text-align: right; font-size: large';
-document.body.appendChild(hora);
+//hora.style = 'text-align: right; font-size: large; height: 20px';
+hora.id = 'reloj';
+document.getElementsByTagName('footer')[0].appendChild(hora);
 
 reloj();
 

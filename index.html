@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang = "es">   
     <!--
-        Tarea pendiente: Construir un scroll para que a medida que se vaya
-        agregando marcas se pueda revisar en ellas sin necesidad de mover la 
-        pagina entera
+        TODO:
+        1: Cambiar esta pestaña por otra aparte con la funcionalidad de cronometro
+        y establecer una pagina central para acceder a los 3 servicios
+        2: Agregar un carrucel al index con los 3 servicios
      -->
     <head>
         <title>Index de Cronometro</title>
@@ -23,29 +24,32 @@
         </header>
 
         <main>
-            <br><br>
-            <div style = "text-align: center;">
-                <p id = 'crono' id = 'crono'>00:00</p>
-                <div id = "almacen"></div>
-                <br><br><br><br><br><br><br><br><br><br>     
+            
+            <div>
+                <p id = 'crono'>00:00</p>
+                
+                <!--<br><br><br><br><br><br><br><br>-->                                  
+            </div> 
+            
+            <div id = 'cajaBotones'>
                 <button id = "Resetear">Reiniciar</button>                   
                 <button id = "Start">Iniciar</button>                   
-                <button id = "Marcar">Marcar</button>                   
-            </div> 
-        </main>
-
-        <footer> 
+                <button id = "Marcar">Marcar</button> 
+            </div>
+        </main>        
+        <div id = "almacen"></div>
+        <footer>
             <ul>
-                <li id = 'linkdin'><a href="https://www.linkedin.com/in/derik-gonz%C3%A1lez-mart%C3%ADn-6b73242a3/">
+                <li id = 'linkdin'><a target = '_blank' href="https://www.linkedin.com/in/derik-gonz%C3%A1lez-mart%C3%ADn-6b73242a3/">
                 Linkdin</a></li>
-                <li id = "github"><a href="https://github.com/derikgm">Github</a></li>
-            </ul>  
-        </footer>   
+                <li id = "github"><a target = '_blank' href="https://github.com/derikgm">Github</a></li>
+            </ul> 
+        </footer> 
+        
     </body>
 
 <!--Seccion JS-->
 <script src="cronometro.js"></script>
 <script src="hora.js"></script>
-
 </html>
 

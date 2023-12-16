@@ -17,25 +17,32 @@
         </header>
     <main>
         <br><br>
+        <div id = "caja"></div>
+            <p id = "temp">0:00:00</p>
         <div id = 'cuerpo'>
-            <form id="formulario"> 
-                <label for="h">Horas:</label>           
-                <input type="number" id="h" name="hora" value="hora">
-                <label for="m">Minutos:</label>
-                <input type="number" id="m" name="minuto" value="minuto">
-                <label for="s">Segundos:</label>
-                <input type="number" id="s" name = "segundo" value="segundo"><br><br>
+            <form id = "formulario"> 
+                <label for="h">H:</label>           
+                <input type="number" id="h" name="hora" value = "0" min='0' max="30" placeholder="hora">
+                <label for="m" id="min">M:</label>
+                <input type="number" id="m" name="minuto" value = "0" min='0' max="59" placeholder="min">
+                <label for="s">S:</label>
+                <input type="number" id="s" name = "segundo" value = "0" min='0'max="59" placeholder="seg"><br><br>
                 <input type="submit" value="Iniciar" id="submit">            
             </form>
-        </div>
+            <button id = "reiniciar_boton">Reiniciar</button>
+            <button id = "parar_boton">Parar alarma</button>
+        </div>        
     </main>
      <footer> 
-            <ul>
-                <li id = 'linkdin'><a href="https://www.linkedin.com/in/derik-gonz%C3%A1lez-mart%C3%ADn-6b73242a3/">
+            <ul>         <!--target = '_blank' para que habra una nueva pestaña cuando se clickea-->
+                <li id = 'linkdin'><a target = '_blank' href="https://www.linkedin.com/in/derik-gonz%C3%A1lez-mart%C3%ADn-6b73242a3/">
                 Linkdin</a></li>
-                <li id = "github"><a href="https://github.com/derikgm">Github</a></li>
+                <li id = "github"><a target = '_blank' href="https://github.com/derikgm">Github</a></li>
             </ul>  
         </footer>
+        <audio id = "alarma" >
+        <source src="Alarm-Clock-Short-chosic.com_.mp3" type="audio/mp3">
+        </audio>
     </body>
 
     <!--Seccion JS-->
