@@ -3,7 +3,6 @@
 //Variables
 let s = 0, ds = 0, m = 0, dm = 0, ms = 0;
 let crono = document.getElementById("crono"); 
-//let naveg = document.getElementsByTagName('nav');
 let activo = document.getElementById("Start");
 let reinicio = document.getElementById("Resetear");
 let marca = document.getElementById("Marcar");
