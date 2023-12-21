@@ -55,6 +55,7 @@ label{
     right: 31%;
     bottom: 19%;
     transition: transform 0.3s, background-color 0.4s;
+    animation: agrandar 1.5s linear infinite;
 }
 #submit:hover{
     transform: scale(1.1);
@@ -65,7 +66,6 @@ label{
     background-color: rgb(51, 87, 207);
 }
 #parar_boton:hover{
-    transform: scale(1.1);
     background-color: rgb(51, 87, 207);
 }
 
@@ -84,6 +84,8 @@ main{
     background-color: rgb(9, 9, 116);
     display: inline-block; 
 }
+
+/*animaciones*/
 @keyframes parpadeo {
     0%{
         color: rgba(9, 9, 116, 0);
@@ -94,6 +96,17 @@ main{
     }
     100%{
         color:white;
+    }
+}
+@keyframes agrandar {
+    0%{
+        transform: scale(1.0);
+    }
+    50%{
+        transform: scale(1.15);
+    }
+    100%{
+        transform: scale(1.0);
     }
 }
 /*Alarma sonora*/

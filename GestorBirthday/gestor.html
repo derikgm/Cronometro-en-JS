@@ -24,21 +24,28 @@
 
     <main>
         <br>
-        <div>
-            <form id = "persona">
-                <label for="nombre">Nombre:</label>
-                <input type="text" name="nombre" id="nombre"><br><br>
-                <label for="fecha">Fecha:</label>
-                <input type="date" name="fecha" id="fecha"><br><br>
-                <input type="submit" value="Guardar" id = "guardar">
-            </form>
-        </div>
-        <br>
+        <button id= "agregar" onclick = "agregar()">Agregar</button>
+        <button id = 'eliminar' onclick="borrar()">Eliminar</button>
+        <div id = 'model'>
+            <div id="contenido_model">
+                <span id = 'cerrar'>&times;</span>
+                <h3 style="color: white;">Agregar una nueva fecha</h3>
+                <form id = "persona">
+                    <label for="nombre"><span id = 'asterisco'>*</span>Nombre:</label>
+                    <input type="text" name="nombre" id="nombre"><br><br>
+                    <label for="fecha"><span id = 'asterisco'>*</span>Fecha:</label>
+                    <input type="date" name="fecha" id="fecha"><br><br>
+                    <input type="submit" value="Guardar" id = "guardar">                 
+                </form>
+                <button id = 'cancelar' onclick="cerrar()">Cancelar</button>
+            </div>
+        </div><br>
         <div id = 'birthday'>
-            <table style="border: solid; border-collapse: collapse;" id = 'tabla'>
-                <tr></tr><th>Nombre</th><th>Fecha</th></tr>
+            <table id = 'tabla'>
+                <tr><th>Nombre</th><th>Fecha</th></tr>                
             </table>
         </div>
+        
     </main>
     
     <footer> 

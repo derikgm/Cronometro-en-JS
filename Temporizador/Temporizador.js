@@ -29,9 +29,11 @@ function TemporizadorJS (){
         actividad = -1;
     }); 
     pararBoton.addEventListener('click', pararAlarma);
-
+    
     reiniciarBoton.hidden = true;
     pararBoton.hidden = true;
+
+    
 
 /*****Funciones*****/
 
@@ -116,7 +118,7 @@ function TemporizadorJS (){
         tem.style = 'color: white';
         reiniciarBoton.hidden = true;
         formulario.hidden = true;
-        tem.style = 'animation: parpadeo 1s linear infinite'
+        tem.style = 'animation: parpadeo 1s linear infinite';
         pararBoton.hidden = false;
         
     }
