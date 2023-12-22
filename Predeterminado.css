@@ -84,3 +84,6 @@ label{
     top: 3%;
     right: 10px;
 }
+button, input[type = 'submit']{
+    cursor: pointer;
+}

@@ -35,7 +35,7 @@
 }
 
 /*Botones*/
-#guardar, #cancelar{
+.form{
     background-color: rgb(51, 100, 207);
     color: white;
     font-size: 130%;
@@ -49,7 +49,7 @@
     right: 35px;
     bottom: 19px;
 }
-#agregar, #eliminar{
+.operacion{
     background-color: rgb(51, 100, 207);
     color: white;
     font-size: 130%;
@@ -58,10 +58,24 @@
     padding-top: 4px;
     padding-bottom: 4px;
     margin: 15px;
-    width: 25%;
+    width: 29%;
 }
-#agregar:hover, #cancelar:hover, #eliminar:hover, #guardar:hover{
+.operacion:hover, .form:hover{
     background-color: rgb(48, 127, 237);    
+}
+.apagado{
+    background-color: rgb(58, 78, 122);
+    color: rgb(138, 136, 136);
+    font-size: 130%;
+    border-radius: 20px;
+    border: none;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin: 15px;
+    width: 29%;
+}
+.apagado:hover{
+    cursor: default;
 }
 
 /*Inputs*/

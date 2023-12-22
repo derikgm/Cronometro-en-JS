@@ -1,17 +1,22 @@
 //Gestor JS
 
 //variables
+let cont = 0, nombre, fecha, modo_eliminar =false, target = new Array(), personas = new Array(); 
 let guardar = document.getElementById('guardar');
 let formulario = document.getElementById('persona');
-let nombre, fecha, target = null, personas = new Array(); 
 let tabla = document.getElementById('tabla');
+let boton_agregar = document.getElementById('agregar');
+let boton_eliminar = document.getElementById('eliminar');
+let boton_cancelar = document.getElementById('cancelar_eliminar');
 
+boton_cancelar.hidden = true;
 formulario.addEventListener("submit", guardado);
 document.getElementById('cerrar').addEventListener('click', cerrar);
 
-function Persona (nombre, fecha){
+function Persona (nombre, fecha, id){
     this.nombre = nombre;
     this.fecha = fecha;
+    this.id = id;
 }
 
 /****Funciones****/
@@ -20,12 +25,11 @@ function guardado(ev){
     ev.preventDefault();
 
     nombre = document.getElementById('nombre');
-    fecha = document.getElementById('fecha');
-
-    tabla.innerHTML = '<th>Nombre</th><th>Fecha</th>';
+    fecha = document.getElementById('fecha');    
     
     if(nombre.value != '' && fecha.value != ''){
-        let usuario = new Persona(nombre.value, fecha.value);
+        let usuario = new Persona(nombre.value, fecha.value, cont);
+        cont++;
         personas.push(usuario);
         imprimir(personas);
         cerrar();
@@ -36,10 +40,11 @@ function guardado(ev){
     if(fecha.value == ''){
         alert('dejaste el campo de fecha en blanco');
     }
-    console.log(personas.length);
 }
 
 function imprimir (personas){
+    let contador = 0;
+    tabla.innerHTML = '<th>Nombre</th><th>Fecha</th>';
 
     for (let per of personas) {
         nombre = document.createElement('td');
@@ -55,7 +60,8 @@ function imprimir (personas){
         tr.addEventListener('mouseover', function(){ marcar(tr); });
         tr.addEventListener('mouseout', function(){ desmarcar(tr); });
         tr.addEventListener('click', function(){ seleccionar(tr); });
-        tr.addEventListener('keydown', function(){ alert('hola') });
+        tr.ID = contador;
+        contador++;
 
         tabla.appendChild(tr);
     }
@@ -72,10 +78,9 @@ function cerrar(){
 
 //marcar, desmarcar, seleccionar
 function marcar(elem){
-    elem.children[0].style = 'border: solid rgb(187, 187, 187);';
-    elem.children[1].style = 'border: solid rgb(187, 187, 187);';
-    //das tanda;
-    
+    let color = (modo_eliminar) ? 'border: solid red;' : 'border: solid rgb(40, 40, 40);';
+    elem.children[0].style = color + 'background-color: rgb(33, 70, 126);';
+    elem.children[1].style = color + 'background-color: rgb(33, 70, 126);';  
 }
 function desmarcar(elem){
     if(!elem.seleccionado){
@@ -84,24 +89,82 @@ function desmarcar(elem){
     }
 }
 function seleccionar(elem){
-    if(elem.seleccionado){
-        elem.seleccionado = false;
-        target = null;        
-        desmarcar(elem);        
-    }else{
-        marcar(elem);
-
-        if(target != null){
-            seleccionar(target);        
-        }
+    if(modo_eliminar){
         
-        target = elem;
-        elem.seleccionado = true;
+        if(elem.seleccionado){
+            elem.seleccionado = false;
+            desmarcar(elem);
+            target.splice(target.length - 1 );
+        }
+        else{
+            marcar(elem);
+            elem.seleccionado = true;
+            target.push(elem);
+        }
+
+        if(target.length > 0){
+            boton_eliminar.disabled = false;
+            boton_eliminar.className = 'operacion';
+        }else{
+            boton_eliminar.disabled = true;
+            boton_eliminar.className = 'apagado';
+        }
+
+    }
+    else{
+        //Selecciona solo un elemento
+        if(elem.seleccionado){
+            elem.seleccionado = false;
+            target.splice(0);       
+            desmarcar(elem);        
+        }else{
+            marcar(elem);
+
+            if(target[0] != null){
+                seleccionar(target[0]);        
+            }
+            
+            target[0] = elem;
+            elem.seleccionado = true;
+        }
     }
 }
 
+//borrar y cancelar
+function borrar(){
+    if(boton_eliminar.innerHTML == 'Seleccionar'){
+        if(target[0] != null) seleccionar(target[0]);  
+        boton_agregar.hidden = true;
+        boton_cancelar.hidden = false;
+        modo_eliminar = true;
+        boton_eliminar.disabled = true;
+        boton_eliminar.className = 'apagado'; //className accede a la clase
+        boton_eliminar.innerHTML = 'Eliminar';
+    }
+    else if (boton_eliminar.innerHTML == 'Eliminar'){
 
-//borrar 
-/*function borrar(){
+        for(let i = 0; i < target.length; i++)
+            for (let j = 0; j < personas.length; j++)
+                if(target[i].ID == personas[j].id)
+                    personas.splice(j, 1);
+                
+        target.splice(0, target.length);       
+        imprimir(personas);
+        boton_eliminar.disabled = true;
+        boton_eliminar.className = 'apagado';        
 
-}*/
+        for (let i = 0; i < personas.length; i++) {
+            personas[i].id = i;
+        }
+
+        cont = personas.length;
+    }
+}
+function canselar_borrar(){
+    boton_agregar.hidden = false;
+    boton_cancelar.hidden = true;
+    boton_eliminar.disabled = false;
+    boton_eliminar.className = 'operacion';
+    modo_eliminar = false;
+    boton_eliminar.innerHTML = 'Seleccionar';
+}

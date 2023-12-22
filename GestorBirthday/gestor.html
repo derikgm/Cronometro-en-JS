@@ -24,8 +24,9 @@
 
     <main>
         <br>
-        <button id= "agregar" onclick = "agregar()">Agregar</button>
-        <button id = 'eliminar' onclick="borrar()">Eliminar</button>
+        <button class = 'operacion' id= "agregar" onclick = "agregar()">Agregar</button>
+        <button class = 'operacion' id = 'eliminar' onclick="borrar()">Seleccionar</button>
+        <button class = 'operacion' id = 'cancelar_eliminar' onclick="canselar_borrar()">Cancelar</button>
         <div id = 'model'>
             <div id="contenido_model">
                 <span id = 'cerrar'>&times;</span>
@@ -35,9 +36,9 @@
                     <input type="text" name="nombre" id="nombre"><br><br>
                     <label for="fecha"><span id = 'asterisco'>*</span>Fecha:</label>
                     <input type="date" name="fecha" id="fecha"><br><br>
-                    <input type="submit" value="Guardar" id = "guardar">                 
+                    <input type="submit" class = 'form' value="Guardar" id = "guardar">                 
                 </form>
-                <button id = 'cancelar' onclick="cerrar()">Cancelar</button>
+                <button class = 'form' id = 'cancelar' onclick="cerrar()">Cancelar</button>
             </div>
         </div><br>
         <div id = 'birthday'>
