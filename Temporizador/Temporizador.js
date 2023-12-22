@@ -125,7 +125,6 @@ function TemporizadorJS (){
 
     //Parar alarma
     function pararAlarma(){
-        console.log('hola');
         formulario.hidden = false;
         pararBoton.hidden = true;
         alarma.pause();

@@ -27,7 +27,7 @@ div button{
     color: white;
     font-size: 200%;
     border-radius: 15px;
-    width: 32.75%;
+    width: auto; /*32.75%*/
     border: 1px solid white;
     transition: background-color 0.3s;
 }

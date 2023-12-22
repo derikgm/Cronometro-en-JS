@@ -58,7 +58,7 @@
     padding-top: 4px;
     padding-bottom: 4px;
     margin: 15px;
-    width: 29%;
+    width: auto;
 }
 .operacion:hover, .form:hover{
     background-color: rgb(48, 127, 237);    
@@ -72,7 +72,7 @@
     padding-top: 4px;
     padding-bottom: 4px;
     margin: 15px;
-    width: 29%;
+    width: auto;
 }
 .apagado:hover{
     cursor: default;
@@ -94,24 +94,16 @@ th,td {
     display: inline-block;
     border: white solid;
     color: white;
-    width: 45%;
+    width: 40%; /*200px*/ 
     cursor: pointer;
 }
 th{
     cursor:default;
     background-color: rgb(48, 127, 237);
 }
-tr{
-    width: 5px;
-}
 table{
-    width: 60%;
+    width: 100%; 
     border-collapse: collapse;
-}
-.cesto{
-    background-color: red;
-    width: 9%;
-    border: solid;
 }
 /*extras*/
 #cuerpo{
@@ -122,5 +114,10 @@ table{
 }
 #asterisco{
     color: red;
-    /*border: */
+}
+img{
+    position: absolute;
+    width: 24px;
+    margin-left: 5px;
+    cursor: pointer;
 }

@@ -13,6 +13,7 @@ boton_cancelar.hidden = true;
 formulario.addEventListener("submit", guardado);
 document.getElementById('cerrar').addEventListener('click', cerrar);
 
+//Objeto persona
 function Persona (nombre, fecha, id){
     this.nombre = nombre;
     this.fecha = fecha;
@@ -49,13 +50,22 @@ function imprimir (personas){
     for (let per of personas) {
         nombre = document.createElement('td');
         fecha = document.createElement('td');
+        let imagen = document.createElement('img');
         let tr = document.createElement('tr');
         
         nombre.innerHTML = `${per.nombre}`;
         fecha.innerHTML = `${per.fecha}`;
 
+        imagen.hidden = true; 
+        imagen.src = 'cesto 3.png';
+        imagen.addEventListener('click', function(event){
+            event.stopPropagation(); //detiene el evento del TR
+            borrar(imagen.parentElement);
+        });
+
         tr.appendChild(nombre);
         tr.appendChild(fecha);
+        tr.appendChild(imagen);
 
         tr.addEventListener('mouseover', function(){ marcar(tr); });
         tr.addEventListener('mouseout', function(){ desmarcar(tr); });
@@ -80,13 +90,16 @@ function cerrar(){
 function marcar(elem){
     let color = (modo_eliminar) ? 'border: solid red;' : 'border: solid rgb(40, 40, 40);';
     elem.children[0].style = color + 'background-color: rgb(33, 70, 126);';
-    elem.children[1].style = color + 'background-color: rgb(33, 70, 126);';  
+    elem.children[1].style = color + 'background-color: rgb(33, 70, 126);';
+    if(!modo_eliminar) elem.children[2].hidden = false;  
 }
 function desmarcar(elem){
     if(!elem.seleccionado){
     elem.children[0].style = 'border: solid white;';
-    elem.children[1].style = 'border: solid white;';    
+    elem.children[1].style = 'border: solid white;'; 
+    elem.children[2].hidden = true; 
     }
+    
 }
 function seleccionar(elem){
     if(modo_eliminar){
@@ -94,7 +107,7 @@ function seleccionar(elem){
         if(elem.seleccionado){
             elem.seleccionado = false;
             desmarcar(elem);
-            target.splice(target.length - 1 );
+            target.splice(target.length - 1);
         }
         else{
             marcar(elem);
@@ -131,7 +144,7 @@ function seleccionar(elem){
 }
 
 //borrar y cancelar
-function borrar(){
+function eliminar(){
     if(boton_eliminar.innerHTML == 'Seleccionar'){
         if(target[0] != null) seleccionar(target[0]);  
         boton_agregar.hidden = true;
@@ -142,29 +155,43 @@ function borrar(){
         boton_eliminar.innerHTML = 'Eliminar';
     }
     else if (boton_eliminar.innerHTML == 'Eliminar'){
-
-        for(let i = 0; i < target.length; i++)
-            for (let j = 0; j < personas.length; j++)
-                if(target[i].ID == personas[j].id)
-                    personas.splice(j, 1);
-                
-        target.splice(0, target.length);       
-        imprimir(personas);
-        boton_eliminar.disabled = true;
-        boton_eliminar.className = 'apagado';        
-
-        for (let i = 0; i < personas.length; i++) {
-            personas[i].id = i;
-        }
-
-        cont = personas.length;
+        borrar();        
     }
 }
 function canselar_borrar(){
+    modo_eliminar = false;
     boton_agregar.hidden = false;
     boton_cancelar.hidden = true;
     boton_eliminar.disabled = false;
     boton_eliminar.className = 'operacion';
-    modo_eliminar = false;
     boton_eliminar.innerHTML = 'Seleccionar';
+
+    for (let i = target.length-1; i >= 0; i--){ 
+        target[i].seleccionado = false;        
+        desmarcar(target[i]);
+    }
+
+    target.splice(0,target.length);
+}
+function borrar(elem){
+    if(elem == undefined){
+        for(let i = 0; i < target.length; i++)
+                for (let j = 0; j < personas.length; j++)
+                    if(target[i].ID == personas[j].id)
+                        personas.splice(j, 1);
+        
+        target.splice(0, target.length);
+        boton_eliminar.disabled = true;
+        boton_eliminar.className = 'apagado';
+
+    }else{
+        personas.splice(elem.ID,1);   
+    }
+    
+    for (let i = 0; i < personas.length; i++)
+        personas[i].id = i;
+    
+    cont = personas.length;
+    imprimir(personas);
+
 }

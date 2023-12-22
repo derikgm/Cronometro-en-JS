@@ -3,11 +3,10 @@
     text-align: center;
 }
 #formulario{
-    position: fixed;
     text-align: center;
     width: 100%;
     bottom: 22%;
-    right: 0;
+    margin-top: -26px;
 }
 input:not([type = submit]){    
     margin-bottom: 10px;
@@ -18,54 +17,30 @@ label{
 }  
 
 /*Botones*/
-#submit{
-    position: fixed;
+.operar{
     background-color: rgb(29, 29, 177);
     border: 1px solid white;
     color: white;
     font-size: 200%;
     border-radius: 15px;
-    width: 30%;
-    right: 35%;
+    width: auto;
+    margin: auto;
     bottom: 17%;
     transition: transform 0.3s, background-color 0.4s;
 }
 #reiniciar_boton{
-    position: fixed;
-    background-color: rgb(29, 29, 177);
-    border: 1px solid white;
-    color: white;
-    font-size: 200%;
-    border-radius: 15px;
-    width: 30%;
-    right: 35%;
-    bottom: 9%;
-    transition: transform 0.3s, background-color 0.4s;
+    margin-top: 9px;
 }
 #parar_boton{
-    position: fixed;
-    background-color: rgb(29, 29, 177);
-    border: 1px solid white;
-    color: white;
-    font-size: 200%;
-    border-radius: 15px;
     padding-top: 3%;
     padding-bottom: 3%;
     width: 38%;
     right: 31%;
     bottom: 19%;
-    transition: transform 0.3s, background-color 0.4s;
     animation: agrandar 1.5s linear infinite;
 }
-#submit:hover{
+.operar:hover{
     transform: scale(1.1);
-    background-color: rgb(51, 87, 207);
-}
-#reiniciar_boton:hover{
-    transform: scale(1.1);
-    background-color: rgb(51, 87, 207);
-}
-#parar_boton:hover{
     background-color: rgb(51, 87, 207);
 }
 
@@ -113,3 +88,8 @@ main{
 #alarma{
     display: none; /*ocultar alarma*/
 }
+/**/
+/*
+con un width: en pixeles y margin en auto establece el tamaño de manera
+automatica para no agrandarse como si fuera en %
+*/
