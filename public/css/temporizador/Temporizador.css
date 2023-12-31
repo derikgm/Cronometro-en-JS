@@ -1,0 +1,95 @@
+/*Cuerpo del formulario*/
+#cuerpo{
+    text-align: center;
+}
+#formulario{
+    text-align: center;
+    width: 100%;
+    bottom: 22%;
+    margin-top: -26px;
+}
+input:not([type = submit]){    
+    margin-bottom: 10px;
+    width: 40px;    
+}
+label{
+    margin-right: 5px;
+}  
+
+/*Botones*/
+.operar{
+    background-color: rgb(29, 29, 177);
+    border: 1px solid white;
+    color: white;
+    font-size: 200%;
+    border-radius: 15px;
+    width: auto;
+    margin: auto;
+    bottom: 17%;
+    transition: transform 0.3s, background-color 0.4s;
+}
+#reiniciar_boton{
+    margin-top: 9px;
+}
+#parar_boton{
+    padding-top: 3%;
+    padding-bottom: 3%;
+    width: 38%;
+    right: 31%;
+    bottom: 19%;
+    animation: agrandar 1.5s linear infinite;
+}
+.operar:hover{
+    transform: scale(1.1);
+    background-color: rgb(51, 87, 207);
+}
+
+/*zona del contador del temporizador*/
+main{
+    text-align: center;
+}
+#temp{
+    text-align: center;
+    font-size: 400%;
+    border: 8px solid white;
+    width: 265px;
+    padding-top: 90px;
+    padding-bottom: 90px;
+    border-radius: 50%;
+    background-color: rgb(9, 9, 116);
+    display: inline-block; 
+}
+
+/*animaciones*/
+@keyframes parpadeo {
+    0%{
+        color: rgba(9, 9, 116, 0);
+    }49%{
+        color: rgba(9, 9, 116, 0);
+    }50%{
+        color:white
+    }
+    100%{
+        color:white;
+    }
+}
+@keyframes agrandar {
+    0%{
+        transform: scale(1.0);
+    }
+    50%{
+        transform: scale(1.15);
+    }
+    100%{
+        transform: scale(1.0);
+    }
+}
+/*Alarma sonora*/
+#alarma{
+    display: none; /*ocultar alarma*/
+}
+/**/
+/*
+con un width: en pixeles y margin en auto establece el tamaño de manera
+automatica para no agrandarse como si fuera en %
+*/

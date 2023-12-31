@@ -1,0 +1,29 @@
+h1,h2{
+    padding-top: 10%;
+    color: white;
+    text-align: center;
+    font-family: sans-serif, Arial;
+}
+div{
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: blue;
+    padding-bottom: 5%;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    text-align: center;
+}
+#back{
+    display: inline-block;
+    padding-top: 8%;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    font-family: sans-serif, Arial;
+    color: rgb(106, 226, 241);
+}
+#back:hover{
+    text-decoration: underline;
+}
