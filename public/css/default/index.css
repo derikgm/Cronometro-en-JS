@@ -1,0 +1,13 @@
+img{
+    margin: 3.5%;
+    transition: transform 1s;
+    margin-bottom: 3%;
+    width: auto;
+    max-width: 250px;
+}
+img:hover{
+    transform: scale(1.1);
+}
+div{
+    text-align: justify;
+}

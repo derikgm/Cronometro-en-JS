@@ -1,0 +1,27 @@
+{
+  "name": "gestor-de-tiempo",
+  "version": "0.5.4",
+  "description": "Proyecto de Gestor de tiempo",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "Apirest",
+    "Gestor-de-tiempo",
+    "Express"
+  ],
+  "author": "Derik",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "express-method-override": "^0.0.3",
+    "morgan": "^1.10.0",
+    "path": "^0.12.7",
+    "pug": "^3.0.2",
+    "serve-favicon": "^2.5.0",
+    "supervisor": "^0.12.0"
+  }
+}
