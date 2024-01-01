@@ -18,10 +18,9 @@ marca.addEventListener("click", marcar);
 
 //Cronometro
 function cronometro (){
-    ms++;
+    s++;
     
-    //Contando en milesimas de segundo
-    if(ms == 250){ ms = 0; s++;}
+    //Contando en segundos    
     if(s == 10){s = 0; ds++;}
     if(ds == 6){ds = 0; m++;}
     if(m == 10){m = 0; dm++;}
@@ -37,7 +36,7 @@ function activar (){
         activo.innerHTML = 'Continuar';
     } else{
         actividad = true;
-        intervalo = setInterval(cronometro, 1);
+        intervalo = setInterval(cronometro, 1000);
         activo.innerHTML = 'Detener';
         inactivo(false);
     }

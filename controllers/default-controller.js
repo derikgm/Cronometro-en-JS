@@ -6,28 +6,38 @@ let defaultController = () =>{};
 //terminar luego
 let urls = [
     {
-        path: '/public/html/Cronometro.html',
-        url: ''
+        path: 'Cronometro.html',
+        url: '/Cronometro.html'
     },{
-        path: '/public/html/Temporizador.html',
-        url: ''
+        path: 'Temporizador.html',
+        url: '/Temporizador.html'
     },{
-        path: '/public/html/Gestor.html',
-        url: ''
+        path: 'Gestor.html',
+        url: '/Gestor.html'
     }
 ];
 
-defaultController.error404 = (req,res,next) =>{
-    console.log(__dirname);
-    pathUrl = path.join(__dirname,'..','public', 'Error404.html');
-    console.log(pathUrl);
-    res.sendFile(pathUrl);
-}
 defaultController.index = (req,res,next) =>{
     res.render('index');
 }
-defaultController.naving = ()=>{
-
+defaultController.naving = (req,res,next)=>{
+    pathUrl = path.basename(req.url);
+    console.log(req.url);
+    console.log(pathUrl);
+    console.log('hola');
+    let notFounded = true;/*
+    urls.forEach((pos)=>{
+        if(pos.path == pathUrl){
+            notFounded = false;
+            res.sendFile()
+        }
+    });
+    if(notFounded)*/
+        next();
+}
+defaultController.error404 = (req,res,next) =>{
+    pathUrl = path.join(__dirname,'..','public', 'Error404.html');
+    res.sendFile(pathUrl);
 }
 
 module.exports = defaultController;

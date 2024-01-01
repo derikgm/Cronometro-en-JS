@@ -6,7 +6,7 @@ let router = express.Router();
 
 router
     .get('/',defaultController.index)
-    //.use(defaultController.naving) terminar luego
+    .use(defaultController.naving) //terminar luego
     .use(defaultController.error404);
 
 module.exports = router;
