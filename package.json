@@ -1,7 +1,7 @@
 {
-  "name": "apirestboceto",
-  "version": "0.0.1",
-  "description": "Este es un boceto de carpetas vacio para trabajar con el cuando se quiera crear un proyecto con node",
+  "name": "gestor-de-tiempo",
+  "version": "0.5.4",
+  "description": "Proyecto de Gestor de tiempo",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,8 +9,8 @@
   },
   "keywords": [
     "Apirest",
-    "node",
-    "boceto"
+    "Gestor-de-tiempo",
+    "Express"
   ],
   "author": "Derik",
   "license": "MIT",
