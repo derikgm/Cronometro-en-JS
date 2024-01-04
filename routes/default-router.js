@@ -6,7 +6,9 @@ let router = express.Router();
 
 router
     .get('/',defaultController.index)
-    .use(defaultController.naving) //terminar luego
+    .get('/Temporizador', defaultController.Temporizador)
+    .get('/Gestor', defaultController.Gestor)
+    .get('/Cronometro', defaultController.Cronometro)
     .use(defaultController.error404);
 
 module.exports = router;

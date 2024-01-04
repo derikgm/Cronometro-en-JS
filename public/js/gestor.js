@@ -28,6 +28,9 @@ function guardado(ev){
     nombre = document.getElementById('nombre');
     fecha = document.getElementById('fecha');    
     
+    console.log(fecha.value);
+    console.log(typeof fecha.value);
+
     if(nombre.value != '' && fecha.value != ''){
         let usuario = new Persona(nombre.value, fecha.value, cont);
         cont++;
@@ -80,7 +83,11 @@ function imprimir (personas){
 
 //mostrar y cerrar
 function agregar(){
-    document.getElementById("model").style.display = 'flex';
+    const fecha = new Date();
+    const dia = fecha.getDate();
+
+    document.getElementById("model").style.display = 'flex';  
+    document.getElementById('fecha').value = dia;
 }
 function cerrar(){
     document.getElementById("model").style.display = 'none';

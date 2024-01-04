@@ -1,66 +1,59 @@
-<!DOCTYPE html> <!--Completo-->
+<!DOCTYPE html>
 <html lang="es">
-<head>
-    <!--
-        TODO:
-        1: Agregar una peticion AJAX para guardar los datos de los usuarios
-        2: Enlazar los datos con una base de datos montada en postgreSQL
-        3: Ajustar botones e input al estilo de las otras paginas
-    -->
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/default/Predeterminado.css">    
-    <link rel="stylesheet" href="/css/gestor/gestor.css">
+    <head>
+        <!--
+            TODO:
+            1: Agregar una peticion AJAX para guardar los datos de los usuarios
+            2: Enlazar los datos con una base de datos montada en postgreSQL
+            3: Ajustar botones e input al estilo de las otras paginas
+        -->
+        <meta charset="UTF-8">
+        <title>Gestor de fechas de cumpleaños</title>
+        <link rel="stylesheet" href="/css/Predeterminado.css">    
+        <link rel="stylesheet" href="/css/gestor.css">
 
-</head>
+    </head>
 
-<body>
-    <header>
-        <nav class = "navegacion">
-            <a href="/"><button id="home">Inicio</button></a>
-            <a href="/Cronometro.html"><button>Cronometro</button></a>
-            <a href="/Temporizador.html"><button>Temporizador</button></a>     
-        </nav>
-    </header>
+    <body>
 
-    <main>
-        <br>
-        <button class = 'operacion' id= "agregar" onclick = "agregar()">Agregar</button>
-        <button class = 'operacion' id = 'eliminar' onclick="eliminar()">Seleccionar</button>
-        <button class = 'operacion' id = 'cancelar_eliminar' onclick="canselar_borrar()">Cancelar</button>
-        <div id = 'model'>
-            <div id="contenido_model">
-                <span id = 'cerrar'>&times;</span>
-                <h3 style="color: white;">Agregar una nueva fecha</h3>
-                <form id = "persona">
-                    <label for="nombre"><span id = 'asterisco'>*</span>Nombre:</label>
-                    <input type="text" name="nombre" id="nombre"><br><br>
-                    <label for="fecha"><span id = 'asterisco'>*</span>Fecha:</label>
-                    <input type="date" name="fecha" id="fecha"><br><br>
-                    <input type="submit" class = 'form' value="Guardar" id = "guardar">                 
-                </form>
-                <button class = 'form' id = 'cancelar' onclick="cerrar()">Cancelar</button>
+        <header id = 'encabezado'></header>
+
+        <main>
+            <br>
+            <button class = 'operacion' id= "agregar" onclick = "agregar()">Agregar</button>
+            <button class = 'operacion' id = 'eliminar' onclick="eliminar()">Seleccionar</button>
+            <button class = 'operacion' id = 'cancelar_eliminar' onclick="canselar_borrar()">Cancelar</button>
+            
+            <div id = 'model'>
+                <div id="contenido_model">
+                    <span id = 'cerrar'>&times;</span>
+                    <h3 style="color: white;">Agregar una nueva fecha</h3>
+                    <form id = "persona">
+                        <label for="nombre"><span id = 'asterisco'>*</span>Nombre:</label>
+                        <input type="text" name="nombre" id="nombre" placeholder="Nombre"><br><br>
+                        <label for="fecha"><span id = 'asterisco'>*</span>Fecha:</label>
+                        <input type="date" name="fecha" id="fecha"><br><br>
+                        <input type="submit" class = 'form' value="Guardar" id = "guardar">                 
+                    </form>
+                    <button class = 'form' id = 'cancelar' onclick="cerrar()">Cancelar</button>
+                </div>
+            </div><br>
+
+            <div id = 'birthday'>
+                <table id = 'tabla'>
+                    <tr><th>Nombre</th><th>Fecha</th></tr>                
+                </table>
             </div>
-        </div><br>
-        <div id = 'birthday'>
-            <table id = 'tabla'>
-                <tr><th>Nombre</th><th>Fecha</th></tr>                
-            </table>
-        </div>
+            
+        </main>
         
-    </main>
-    
-    <footer> 
-        <ul>
-            <li id = 'linkdin'><a target = '_blank' href="https://www.linkedin.com/in/derik-gonz%C3%A1lez-mart%C3%ADn-6b73242a3/">
-            Linkdin</a></li>
-            <li id = "github"><a target = '_blank' href="https://github.com/derikgm">Github</a></li>
-        </ul>  
-    </footer>    
+        <footer id="pie"></footer>
+
 </body>
 
 <!--Seccion JS-->
-<script src="/js/default/hora.js"></script>
-<script src="/js/gestor/gestor.js"></script>
+<script src="/js/bundle.js"></script>
+<script src="/js/hora.js"></script>
+<script src="/js/gestor.js"></script>
 
 </html>

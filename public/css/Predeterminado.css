@@ -54,9 +54,10 @@ a button{
     border: none;
     background-color: rgb(59, 59, 233);
     color: white;
-    width: 45%;
+    width: 29.5%;
     font-size: 120%;
     transition: 0.35s;
+    margin: 0;
 }
 a button:hover{
     background-color:rgb(59, 100, 233);
