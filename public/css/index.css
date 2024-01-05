@@ -1,0 +1,19 @@
+h1{
+    margin-bottom: 50px;
+}
+img{
+    max-width: 100%;
+    transition: transform 0.5s;
+}
+img:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+div{
+    text-align: center;
+}
+.description{
+    font-size: 200%;
+    color: rgb(116, 228, 248);
+    font-weight: 500;
+}
