@@ -94,8 +94,10 @@ th,td {
     display: inline-block;
     border: white solid;
     color: white;
-    width: 40%; /*200px*/ 
+    width: 23%; 
     cursor: pointer;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 th{
     cursor:default;
@@ -112,7 +114,7 @@ table{
 #persona{
     color: white;
 }
-#asterisco{
+.asterisco{
     color: red;
 }
 img{
@@ -120,4 +122,16 @@ img{
     width: 24px;
     margin-left: 5px;
     cursor: pointer;
+}
+
+.form-button{
+    border: none;
+    width: 50%;
+    border-radius: 5px;
+}
+#elim{
+    background-color: rgb(248, 66, 66);
+}
+#editar{
+    background-color: rgb(22, 223, 22);
 }

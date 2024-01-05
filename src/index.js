@@ -1,7 +1,7 @@
 //el cerebro de react
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import Pie from './Pie';
 import Encabezado from './Encabezado';
 

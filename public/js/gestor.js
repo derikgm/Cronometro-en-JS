@@ -1,96 +1,85 @@
 //Gestor JS
 
 //variables
-let cont = 0, nombre, fecha, modo_eliminar =false, target = new Array(), personas = new Array(); 
+let cont = 0, nombre, fecha, modo_eliminar =false, target = new Array(), persona_id = new Array(); 
 let guardar = document.getElementById('guardar');
 let formulario = document.getElementById('persona');
 let tabla = document.getElementById('tabla');
 let boton_agregar = document.getElementById('agregar');
 let boton_eliminar = document.getElementById('eliminar');
-let boton_cancelar = document.getElementById('cancelar_eliminar');
+let boton_cancelar = document.getElementById('cancelar-eliminar');
+let filas = document.getElementsByTagName('tr');
+let boton_editar = document.getElementById('editar');
+let model = document.getElementById("model");
+let h3 = document.getElementById("h3");
+let nombre_form = document.getElementById("nombre");
+let fecha_form = document.getElementById("fecha");
+let id_form = document.getElementById("id_form");
+let put = document.getElementById("put");
+
+for (let i = 1; i < filas.length; i++) {
+    filas[i].seleccionado = false;
+    filas[i].addEventListener('click', () => seleccionar(filas[i]));
+    filas[i].addEventListener('mouseover', () => marcar(filas[i]));
+    filas[i].addEventListener('mouseout', () => desmarcar(filas[i]));
+}
 
 boton_cancelar.hidden = true;
-formulario.addEventListener("submit", guardado);
 document.getElementById('cerrar').addEventListener('click', cerrar);
-
-//Objeto persona
-function Persona (nombre, fecha, id){
-    this.nombre = nombre;
-    this.fecha = fecha;
-    this.id = id;
-}
 
 /****Funciones****/
 
-function guardado(ev){    
-    ev.preventDefault();
+function guardado(boton){
+    let mensaje = '';
+    let continuar = true;
 
-    nombre = document.getElementById('nombre');
-    fecha = document.getElementById('fecha');    
-    
-    console.log(fecha.value);
-    console.log(typeof fecha.value);
-
-    if(nombre.value != '' && fecha.value != ''){
-        let usuario = new Persona(nombre.value, fecha.value, cont);
-        cont++;
-        personas.push(usuario);
-        imprimir(personas);
-        cerrar();
+    if(nombre_form.value == ''){
+        mensaje = 'Haz dejado el campo de nombre en blanco\n';
+        continuar = false;
     }
-    if(nombre.value == ''){
-        alert('dejaste el campo de nombre en blanco');
+    if(fecha_form.value == ''){
+        mensaje += 'Haz dejado el campo de fecha en blanco\n';
+        continuar = false;
     }
-    if(fecha.value == ''){
-        alert('dejaste el campo de fecha en blanco');
+    if(continuar){
+        boton.parentNode.submit();
+    }else{
+        mensaje += 'No puedes dejar ninguno de los dos campos vacios';
+        alert(mensaje);
     }
 }
 
-function imprimir (personas){
-    let contador = 0;
-    tabla.innerHTML = '<th>Nombre</th><th>Fecha</th>';
-
-    for (let per of personas) {
-        nombre = document.createElement('td');
-        fecha = document.createElement('td');
-        let imagen = document.createElement('img');
-        let tr = document.createElement('tr');
-        
-        nombre.innerHTML = `${per.nombre}`;
-        fecha.innerHTML = `${per.fecha}`;
-
-        imagen.hidden = true; 
-        imagen.src = '/images/cesto 3.png';
-        imagen.addEventListener('click', function(event){
-            event.stopPropagation(); //detiene el evento del TR
-            borrar(imagen.parentElement);
-        });
-
-        tr.appendChild(nombre);
-        tr.appendChild(fecha);
-        tr.appendChild(imagen);
-
-        tr.addEventListener('mouseover', function(){ marcar(tr); });
-        tr.addEventListener('mouseout', function(){ desmarcar(tr); });
-        tr.addEventListener('click', function(){ seleccionar(tr); });
-        tr.ID = contador;
-        contador++;
-
-        tabla.appendChild(tr);
-    }
-    
-}
-
+/**Toma todos los datos del formulario y los modifica segun lo que se deba hacer
+ * en edicion guarda el id de la persona en un td oculto que usa luego en el 
+ * formulario, mientras tanto, el input con _method para el put permanece sin
+ * valor, por ende, se queda como GET
+ */
 //mostrar y cerrar
 function agregar(){
-    const fecha = new Date();
-    const dia = fecha.getDate();
-
-    document.getElementById("model").style.display = 'flex';  
-    document.getElementById('fecha').value = dia;
+    fecha_form.innerHTML = new Date();
+    model.style.display = 'flex';
 }
 function cerrar(){
-    document.getElementById("model").style.display = 'none';
+    h3.innerHTML = 'Agregar una nueva fecha';
+    guardar.innerHTML = 'Guardar';
+    formulario.action = 'agregar/'
+    nombre_form.value = '';
+    put.value = '';
+    put.name = '';
+    model.style.display = 'none';
+}
+function edicion(elem){
+    seleccionar(elem.parentNode.parentNode);
+    model.style.display = 'flex';
+    h3.innerHTML = 'Editar fecha';
+    guardar.innerHTML = 'Editar';
+    nombre_form.value = elem.parentNode.parentNode.children[0].innerHTML;
+    //no funciona, tengo que buscar despues una manera de colocarlo
+    fecha_form.value = elem.parentNode.parentNode.children[1].innerHTML    
+    formulario.action = 'editar/'+elem.parentNode.parentNode.children[4].innerHTML;
+    id_form.value = elem.parentNode.parentNode.children[4].innerHTML;
+    put.value = 'PUT';
+    put.name = '_method';
 }
 
 //marcar, desmarcar, seleccionar
@@ -98,13 +87,17 @@ function marcar(elem){
     let color = (modo_eliminar) ? 'border: solid red;' : 'border: solid rgb(40, 40, 40);';
     elem.children[0].style = color + 'background-color: rgb(33, 70, 126);';
     elem.children[1].style = color + 'background-color: rgb(33, 70, 126);';
-    if(!modo_eliminar) elem.children[2].hidden = false;  
+    elem.children[2].style = color + 'background-color: rgb(33, 70, 126);';
+    elem.children[3].style = color + 'background-color: rgb(33, 70, 126);';
+    // if(!modo_eliminar) elem.children[2].hidden = false;
 }
 function desmarcar(elem){
     if(!elem.seleccionado){
     elem.children[0].style = 'border: solid white;';
     elem.children[1].style = 'border: solid white;'; 
-    elem.children[2].hidden = true; 
+    elem.children[2].style = 'border: solid white;'; 
+    elem.children[3].style = 'border: solid white;'; 
+    // elem.children[2].hidden = true; 
     }
     
 }
@@ -136,8 +129,9 @@ function seleccionar(elem){
         if(elem.seleccionado){
             elem.seleccionado = false;
             target.splice(0);       
-            desmarcar(elem);        
+            desmarcar(elem);       
         }else{
+            
             marcar(elem);
 
             if(target[0] != null){
@@ -180,32 +174,8 @@ function canselar_borrar(){
 
     target.splice(0,target.length);
 }
-function borrar(elem){
-    if(elem == undefined){
-        for(let i = 0; i < target.length; i++)
-                for (let j = 0; j < personas.length; j++)
-                    if(target[i].ID == personas[j].id)
-                        personas.splice(j, 1);
-        
-        target.splice(0, target.length);
-        boton_eliminar.disabled = true;
-        boton_eliminar.className = 'apagado';
-
-    }else{
-        personas.splice(elem.ID,1);   
-    }
-    
-    for (let i = 0; i < personas.length; i++)
-        personas[i].id = i;
-    
-    cont = personas.length;
-    imprimir(personas);
-
+function confirmar(elem){
+    let confirmacion = confirm('Estas seguro que quieres borrarlo?')
+    if(confirmacion)
+        elem.parentNode.submit();
 }
-
-/*
-TODO:
-1-Agregar capacidad de edicion para el gestor de cumples
-2-Enlazar el material con una BBDD para mantener siempre la informacion
-3-Guardar la informacion internamente para que no se pierda al cambiar de pagina
-*/

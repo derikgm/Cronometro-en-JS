@@ -23,6 +23,7 @@
     "express-method-override": "^0.0.3",
     "morgan": "^1.10.0",
     "path": "^0.12.7",
+    "pg": "^8.11.3",
     "pug": "^3.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

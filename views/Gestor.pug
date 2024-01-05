@@ -1,0 +1,106 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Gestor de fechas de cumpleaños
+        link(rel="stylesheet", href="/css/Predeterminado.css")
+        link(rel="stylesheet", href="/css/gestor.css")
+
+    body 
+    
+        header#encabezado 
+
+        main 
+            br
+            button.operacion#agregar(onclick = "agregar()") Agregar
+            button.operacion#eliminar(onclick = "eliminar()") Seleccionar
+            button.operacion#cancelar-eliminar(onclick = "canselar_borrar()") Cancelar
+
+            //-Esto es posible que falle, ojo aqui
+            div#model 
+                div#contenido_model
+                    span#cerrar &times;
+                    h3#h3(style="color: white;") Agregar una nueva fecha 
+                    form#persona(method="POST", action='agregar/')
+                        label(for="nombre") Nombre:
+                            span.asterisco *
+                        input#nombre(type="text", name="nombre", placeholder="Nombre")
+                        br
+                        br
+
+                        label(for="fecha") Fecha:
+                            span.asterisco *
+                            
+                        input#fecha(type="date", name="fecha")
+                        br
+                        br
+                        label(for="nombre_id")
+                            input#id_form(type="text", name='nombre_id', hidden)
+                        //- para que se envie el metodo como PUT en vez de POST
+                        input#put(type="hidden", name='', value='')
+
+                        button#guardar.form(type="button", onclick='guardado(this)') Guardar
+                    button#cancelar.form(type="button", onclick="cerrar()") Cancelar 
+            br
+
+            div#birthday
+                table#tabla
+                    tr
+                        th Nombre 
+                        th Fecha
+                        Th Editar 
+                        th Eliminar
+                        //- Se trabaja con la misma variable que se manda en el render
+                        each persona of locals.personas
+                            -let getMont = persona.fecha.getMonth()+1
+                            -let mes
+                            if(getMont == 1)
+                                -mes='Enero'
+                            else if(getMont == 2)
+                                -mes='Febrero'
+                            else if(getMont == 3)
+                                -mes='Marzo'
+                            else if(getMont == 4)
+                                -mes='Abril'
+                            else if(getMont == 5)
+                                -mes='Mayo'
+                            else if(getMont == 6)
+                                -mes='Junio'
+                            else if(getMont == 7)
+                                -mes='Julio'
+                            else if(getMont == 8)
+                                -mes='Agosto'
+                            else if(getMont == 9)
+                                -mes='Octubre'
+                            else if(getMont== 10)
+                                -mes='Septiembre'
+                            else if(getMont == 11)
+                                -mes='Noviembre'
+                            else if(getMont == 12)
+                                -mes='Diciembre'
+                            else 
+                                -mes='Indefinido'                            
+
+                            tr
+                                td #{persona.nombre}
+                                //- Para acceder a cada valor del date
+                                td #{persona.fecha.getDate()}-#{mes}-#{persona.fecha.getFullYear()}
+                                //- img(src="/images/cesto 3.png", alt="cesto de basura")
+                                td 
+                                    //- form(method="POST", action=`/editar/${persona.persona_id}`) 
+                                    button.form-button#editar(type="button", onclick='edicion(this)') Editar
+                                td
+                                    //- En pug se usa ES6 para las variables
+                                    form(method="GET", action=`/eliminar/${persona.persona_id}`)                   
+                                        button.form-button#elim(type="button", onclick='confirmar(this)') Eliminar
+                                        //- para que se envie el metodo como DELETE en vez de GET
+                                        input(type="hidden", name='_method', value='DELETE')
+                                td(style='display:none;') #{persona.persona_id}
+        footer#pie 
+    
+    //Seccion JS
+    script(src="/js/bundle.js")
+    script(src="/js/hora.js")   
+    script(src="/js/gestor.js")
+        

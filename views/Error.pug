@@ -1,0 +1,14 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Error 404
+        link(rel="stylesheet", href="/css/Predeterminado.css")
+        link(rel="stylesheet", href="/css/error404.css")
+    body 
+        main  
+            div 
+                h1(style="color: rgb(231, 71, 71);") #{locals.title}
+                h2  #{locals.description}
+                a#back(href='/') volver 
