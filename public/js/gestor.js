@@ -27,6 +27,12 @@ for (let i = 1; i < filas.length; i++) {
 boton_cancelar.hidden = true;
 document.getElementById('cerrar').addEventListener('click', cerrar);
 
+window.addEventListener('load', ()=>{
+    if(localStorage.getItem('abierto')){
+        boton_agregar.click();
+    }
+})
+
 /****Funciones****/
 
 function guardado(boton){
@@ -57,7 +63,8 @@ function guardado(boton){
 //mostrar y cerrar
 function agregar(){
     fecha_form.innerHTML = new Date();
-    model.style.display = 'flex';
+    model.style.display = 'flex';    
+    localStorage.setItem('abierto', true);
 }
 function cerrar(){
     h3.innerHTML = 'Agregar una nueva fecha';
@@ -67,6 +74,7 @@ function cerrar(){
     put.value = '';
     put.name = '';
     model.style.display = 'none';
+    localStorage.removeItem('abierto');
 }
 function edicion(elem){
     seleccionar(elem.parentNode.parentNode);
@@ -79,7 +87,7 @@ function edicion(elem){
     formulario.action = 'editar/'+elem.parentNode.parentNode.children[4].innerHTML;
     id_form.value = elem.parentNode.parentNode.children[4].innerHTML;
     put.value = 'PUT';
-    put.name = '_method';
+    put.name = '_method';    
 }
 
 //marcar, desmarcar, seleccionar
