@@ -1,7 +1,8 @@
 //Gestor JS
 
 //variables
-let cont = 0, nombre, fecha, modo_eliminar =false, target = new Array(), persona_id = new Array(); 
+let cont = 0, nombre, fecha, modo_eliminar =false;
+let target = new Array();//, persona_id = new Array(); 
 let guardar = document.getElementById('guardar');
 let formulario = document.getElementById('persona');
 let tabla = document.getElementById('tabla');
@@ -31,7 +32,7 @@ window.addEventListener('load', ()=>{
     if(localStorage.getItem('abierto')){
         boton_agregar.click();
     }
-})
+});
 
 /****Funciones****/
 
@@ -47,10 +48,14 @@ function guardado(boton){
         mensaje += 'Haz dejado el campo de fecha en blanco\n';
         continuar = false;
     }
+    if(filas.length == 100){
+        mensaje += 'No puedes tener más de 100 fechas de cumpleaños\n';
+        continuar = false;
+    }
     if(continuar){
         boton.parentNode.submit();
     }else{
-        mensaje += 'No puedes dejar ninguno de los dos campos vacios';
+        mensaje += 'Debes de seguir todas las reglas correctamente';
         alert(mensaje);
     }
 }
@@ -105,7 +110,6 @@ function desmarcar(elem){
     elem.children[1].style = 'border: solid white;'; 
     elem.children[2].style = 'border: solid white;'; 
     elem.children[3].style = 'border: solid white;'; 
-    // elem.children[2].hidden = true; 
     }
     
 }
@@ -164,7 +168,35 @@ function eliminar(){
         boton_eliminar.innerHTML = 'Eliminar';
     }
     else if (boton_eliminar.innerHTML == 'Eliminar'){
-        borrar();        
+        let confirmacion = confirm('¿Estas seguro de borrar estos elementos?, no los podras recuperar');
+        
+        if(confirmacion){
+            let targetsOrdenados = new Array();        
+            let solicitud = new XMLHttpRequest();
+            let cont = target.length;
+
+            //Toma todos los ID's y los ordena
+            for (const listas of target) {
+                targetsOrdenados.push(listas.children[4].innerHTML);
+            }
+            targetsOrdenados.sort((a,b)=>{
+                return b-a;
+            })
+
+            console.log(targetsOrdenados);
+
+            for (const ids of targetsOrdenados) {
+                --cont;
+                target[cont].style = 'display: none;';
+                target[cont].seleccionado = false;        
+                desmarcar(target[cont]);
+
+                //tambien se admite el delete, y se opera con el url
+                solicitud.open('DELETE', '/eliminar/'+ids, true);
+                solicitud.send(null);
+            }
+            solicitud.abort();
+        }        
     }
 }
 function canselar_borrar(){
@@ -184,6 +216,13 @@ function canselar_borrar(){
 }
 function confirmar(elem){
     let confirmacion = confirm('Estas seguro que quieres borrarlo?')
-    if(confirmacion)
-        elem.parentNode.submit();
+    if(confirmacion){
+        elem.parentNode.parentNode.parentNode.style = 'display: none;';
+        let solicitud = new XMLHttpRequest();
+        let url = '/eliminar/'+ elem.parentNode.parentNode.parentNode.children[4].innerHTML;
+        
+        solicitud.open('DELETE',url, true);
+        solicitud.send(null);
+        solicitud.abort();
+    }
 }

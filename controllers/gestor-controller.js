@@ -5,10 +5,11 @@ let locals;
 gestorController.agregar = (req,res,next)=>{
     /**Recordar que los datos con post son obtenidos con req.body,
      * para get se usa req.params*/
-    let consulta = `INSERT INTO personas (nombre,fecha)
-    VALUES ('${req.body.nombre}','${req.body.fecha}')`;
+    let consulta = `INSERT INTO personas 
+    VALUES ((select nextval('iterador')),
+    '${req.body.nombre}','${req.body.fecha}')`;
     
-    gestorModel.agregar(consulta,(err)=>{
+    gestorModel.consulta(consulta,(err)=>{
         if(err){
             locals = {
                 title: 'Error al insertar datos!',
@@ -22,7 +23,7 @@ gestorController.agregar = (req,res,next)=>{
 }
 gestorController.gestor = (req,res,next) =>{
     //Recordar que la callback tambien atrapa datos
-    gestorModel.gestor('SELECT * FROM personas',(err, valores)=>{
+    gestorModel.consulta('SELECT * FROM personas',(err, valores)=>{
         if(err){
             locals = {
                 title: 'Error al cargar datos!',
@@ -42,17 +43,15 @@ gestorController.gestor = (req,res,next) =>{
 }
 gestorController.eliminar = (req,res,next) => {
     let id = req.params.persona_id;
-    let consulta = `DELETE FROM personas WHERE persona_id = ${id}`;
-    gestorModel.eliminar(consulta, (err)=>{
+    // let consulta = `DELETE FROM personas WHERE persona_id = ${id}`;
+    let consulta = `SELECT eliminar(${id})`;
+    gestorModel.consulta(consulta, (err)=>{
         if(err){
             locals = {
                 title: 'Error al eliminar datos!',
                 description: 'Hubo un error a la hora de eliminar los datos, inténtelo más tarde'
             }
             res.render('Error', locals);
-        }else{
-            //si no se usa / marcara como un error la callback
-            res.redirect('/Gestor');
         }
     });
 }
@@ -61,7 +60,7 @@ gestorController.editar = (req,res,next) =>{
     SET nombre = '${req.body.nombre}', fecha = '${req.body.fecha}'
     WHERE persona_id = ${req.body.nombre_id};`;
 
-    gestorModel.editar(consulta,(err)=>{
+    gestorModel.consulta(consulta,(err)=>{
         if (err) {
             locals = {
                 title: 'Error al actualizar datos!',
